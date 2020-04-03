@@ -44,7 +44,7 @@ ax.annotate('Italy: {:,}'.format(cases_it[-1]), (dates[-1]+dt.timedelta(days=1),
 
 plt.semilogy(dates[np.where(cases_us>0)[0][0]:], cases_us[cases_us>0], 'b-')
 plt.semilogy(dates[-1], cases_us[-1], 'b.')
-ax.annotate('US: {:,}'.format(cases_us[-1]), (dates[-1]+dt.timedelta(days=1), 0.85*cases_us[-1]), color='blue', fontsize=9)
+ax.annotate('US: {:,}'.format(cases_us[-1]), (dates[-1]+dt.timedelta(days=1), 0.90*cases_us[-1]), color='blue', fontsize=9)
 
 plt.semilogy(dates[np.where(cases_es>0)[0][0]:], cases_es[cases_es>0], 'r-')
 plt.semilogy(dates[-1], cases_es[-1], 'r.')
