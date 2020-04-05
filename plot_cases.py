@@ -40,7 +40,7 @@ fig, ax = plt.subplots()
 
 plt.semilogy(dates[np.where(cases_it>0)[0][0]:], cases_it[cases_it>0], 'g-')
 plt.semilogy(dates[-1], cases_it[-1], 'g.')
-ax.annotate('Italy: {:,}'.format(cases_it[-1]), (dates[-1]+dt.timedelta(days=1), 0.90*cases_it[-1]), color='green', fontsize=9)
+ax.annotate('Italy: {:,}'.format(cases_it[-1]), (dates[-1]+dt.timedelta(days=1), 0.60*cases_it[-1]), color='green', fontsize=9)
 
 plt.semilogy(dates[np.where(cases_us>0)[0][0]:], cases_us[cases_us>0], 'b-')
 plt.semilogy(dates[-1], cases_us[-1], 'b.')
@@ -48,7 +48,7 @@ ax.annotate('US: {:,}'.format(cases_us[-1]), (dates[-1]+dt.timedelta(days=1), 0.
 
 plt.semilogy(dates[np.where(cases_es>0)[0][0]:], cases_es[cases_es>0], 'r-')
 plt.semilogy(dates[-1], cases_es[-1], 'r.')
-ax.annotate('Spain: {:,}'.format(cases_es[-1]), (dates[-1]+dt.timedelta(days=1), 0.60*cases_es[-1]), color='red', fontsize=9)
+ax.annotate('Spain: {:,}'.format(cases_es[-1]), (dates[-1]+dt.timedelta(days=1), 0.90*cases_es[-1]), color='red', fontsize=9)
 
 #plt.semilogy(dates[np.where(cases_sk>0)[0][0]:], cases_sk[cases_sk>0], '.-', label='South Korea')
 #plt.semilogy(dates[np.where(cases_jp>0)[0][0]:], cases_jp[cases_jp>0], '.-', label='Japan')
