@@ -38,24 +38,24 @@ fig, ax = plt.subplots()
 #plt.semilogy(dates[-1], cases_cn[-1], 'r.')
 #ax.annotate('China: {:,}'.format(cases_cn[-1]), (dates[-1]+dt.timedelta(days=1), 0.6*cases_cn[-1]), color='red', fontsize=9)
 
-plt.semilogy(dates[np.where(cases_it>0)[0][0]:], cases_it[cases_it>0], 'g-')
-plt.semilogy(dates[-1], cases_it[-1], 'g.')
-ax.annotate('Italy: {:,}'.format(cases_it[-1]), (dates[-1]+dt.timedelta(days=1), 0.60*cases_it[-1]), color='green', fontsize=9)
-
 plt.semilogy(dates[np.where(cases_us>0)[0][0]:], cases_us[cases_us>0], 'b-')
 plt.semilogy(dates[-1], cases_us[-1], 'b.')
-ax.annotate('US: {:,}'.format(cases_us[-1]), (dates[-1]+dt.timedelta(days=1), 0.90*cases_us[-1]), color='blue', fontsize=9)
+ax.annotate('US: {:,}'.format(cases_us[-1]), (dates[-1]+dt.timedelta(days=1), 0.85*cases_us[-1]), color='blue', fontsize=9)
 
 plt.semilogy(dates[np.where(cases_es>0)[0][0]:], cases_es[cases_es>0], 'r-')
 plt.semilogy(dates[-1], cases_es[-1], 'r.')
 ax.annotate('Spain: {:,}'.format(cases_es[-1]), (dates[-1]+dt.timedelta(days=1), 0.90*cases_es[-1]), color='red', fontsize=9)
+
+plt.semilogy(dates[np.where(cases_it>0)[0][0]:], cases_it[cases_it>0], 'g-')
+plt.semilogy(dates[-1], cases_it[-1], 'g.')
+ax.annotate('Italy: {:,}'.format(cases_it[-1]), (dates[-1]+dt.timedelta(days=1), 0.5*cases_it[-1]), color='green', fontsize=9)
 
 #plt.semilogy(dates[np.where(cases_sk>0)[0][0]:], cases_sk[cases_sk>0], '.-', label='South Korea')
 #plt.semilogy(dates[np.where(cases_jp>0)[0][0]:], cases_jp[cases_jp>0], '.-', label='Japan')
 #plt.semilogy(dates[np.where(cases_de>0)[0][0]:], cases_de[cases_de>0], '.-', label='Germany')
 #plt.semilogy(dates[np.where(cases_es>0)[0][0]:], cases_es[cases_es>0], '.-', label='Spain')
 
-ax.set_ylim([0.9,1e6])
+ax.set_ylim([0.9,300e6])
 ax.xaxis.set_tick_params(rotation=45, labelsize=10)
 fig.subplots_adjust(bottom=0.18, right=0.85)
 ax.spines['right'].set_visible(False)
