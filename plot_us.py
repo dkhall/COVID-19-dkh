@@ -19,11 +19,11 @@ for ii in us_confirmed.columns[11:]:
 # plot country comparisons
 fig, ax = plt.subplots()
 
-plt.semilogy(dates[np.where(cases_us>0)[0][0]:], cases_us[cases_us>0], 'b.', ms=2)
+plt.semilogy(dates[np.where(cases_us>0)[0][0]:], cases_us[cases_us>0], 'b.', ms=1)
 ax.annotate('Confirmed Cases: {:,}'.format(cases_us[-1]), (dates[-1]+dt.timedelta(days=1),
     0.85*cases_us[-1]), color='blue', fontsize=9)
 
-plt.semilogy(dates[np.where(deaths_us>0)[0][0]:], deaths_us[deaths_us>0], 'r.', ms=2)
+plt.semilogy(dates[np.where(deaths_us>0)[0][0]:], deaths_us[deaths_us>0], 'r.', ms=1)
 ax.annotate('Deaths: {:,}'.format(deaths_us[-1]), (dates[-1]+dt.timedelta(days=1),
     0.85*deaths_us[-1]), color='red', fontsize=9)
 
