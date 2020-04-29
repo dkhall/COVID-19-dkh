@@ -36,6 +36,15 @@ plt.title('COVID-19 in the United States [source: JHU CSSE]', fontsize=10)
 # plt.legend()
 plt.show()
 
+daily_deaths = deaths_us[1:] - deaths_us[:-1]
+fig, ax = plt.subplots()
+plt.bar(dates[1:], daily_deaths)
+ax.xaxis.set_tick_params(rotation=45, labelsize=10)
+fig.subplots_adjust(bottom=0.18, right=0.75)
+ax.spines['right'].set_visible(False)
+ax.spines['top'].set_visible(False)
+plt.ylabel('new reported deaths by day [source: JHU CSSE]')
+plt.show()
 
 # select local data
 # us_confirmed_us = us_confirmed[us_confirmed['Country/Region'] == 'US']
