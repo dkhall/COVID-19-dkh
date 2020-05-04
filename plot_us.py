@@ -29,7 +29,7 @@ ax.annotate('Deaths: {:,}'.format(deaths_us[-1]), (dates[-1]+dt.timedelta(days=1
 
 ax.set_ylim([0.9,300e6])
 ax.xaxis.set_tick_params(rotation=45, labelsize=10)
-fig.subplots_adjust(bottom=0.18, right=0.75)
+fig.subplots_adjust(bottom=0.18, right=0.73)
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
 plt.title('COVID-19 in the United States [source: JHU CSSE]', fontsize=10)
@@ -40,7 +40,7 @@ daily_deaths = deaths_us[1:] - deaths_us[:-1]
 fig, ax = plt.subplots()
 plt.bar(dates[1:], daily_deaths)
 ax.xaxis.set_tick_params(rotation=45, labelsize=10)
-fig.subplots_adjust(bottom=0.18, right=0.75)
+fig.subplots_adjust(bottom=0.18)
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
 plt.ylabel('new reported deaths by day [source: JHU CSSE]')
