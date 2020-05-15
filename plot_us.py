@@ -38,7 +38,8 @@ plt.show()
 
 daily_deaths = deaths_us[1:] - deaths_us[:-1]
 fig, ax = plt.subplots()
-plt.bar(dates[1:], daily_deaths)
+plt.bar(dates[1:], daily_deaths, width=1)
+plt.plot(dates[7:], (daily_deaths[:-6]+daily_deaths[1:-5]+daily_deaths[2:-4]+daily_deaths[3:-3]+daily_deaths[4:-2]+daily_deaths[5:-1]+daily_deaths[6:])/7, 'r.-')
 ax.xaxis.set_tick_params(rotation=45, labelsize=10)
 fig.subplots_adjust(bottom=0.18)
 ax.spines['right'].set_visible(False)
