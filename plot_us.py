@@ -10,13 +10,16 @@ us_deaths = pd.read_csv('csse_covid_19_data/csse_covid_19_time_series/time_serie
 # parse and plot
 cases_us = us_confirmed.sum().values[10:]
 deaths_us = us_deaths.sum().values[11:]
+deaths_ma = us_deaths[us_deaths['Province_State']=='Massachusetts'].sum().values[12:]
+deaths_pa = us_deaths[us_deaths['Province_State']=='Pennsylvania'].sum().values[12:]
+deaths_nc = us_deaths[us_deaths['Province_State']=='North Carolina'].sum().values[12:]
 
 # time series dates (columns) as timestamps
 dates = []
 for ii in us_confirmed.columns[11:]:
     dates.append(dt.datetime.strptime(ii + ' 23:59', '%m/%d/%y %H:%M'))
 
-# plot country comparisons
+# confirmed cases over time (log scale)
 fig, ax = plt.subplots()
 
 plt.semilogy(dates[np.where(cases_us>0)[0][0]:], cases_us[cases_us>0], 'b.', ms=1)
@@ -36,6 +39,7 @@ plt.title('COVID-19 in the United States [source: JHU CSSE]', fontsize=10)
 # plt.legend()
 plt.show()
 
+# daily deaths + trailing average (US)
 daily_deaths = deaths_us[1:] - deaths_us[:-1]
 fig, ax = plt.subplots()
 plt.bar(dates[1:], daily_deaths, width=1)
@@ -45,6 +49,42 @@ fig.subplots_adjust(bottom=0.18)
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
 plt.ylabel('new reported deaths by day [source: JHU CSSE]')
+plt.show()
+
+# daily deaths + trailing average (MA)
+daily_deaths = deaths_ma[1:] - deaths_ma[:-1]
+fig, ax = plt.subplots()
+plt.bar(dates[1:], daily_deaths, width=1)
+plt.plot(dates[7:], (daily_deaths[:-6]+daily_deaths[1:-5]+daily_deaths[2:-4]+daily_deaths[3:-3]+daily_deaths[4:-2]+daily_deaths[5:-1]+daily_deaths[6:])/7, 'r.-')
+ax.xaxis.set_tick_params(rotation=45, labelsize=10)
+fig.subplots_adjust(bottom=0.18)
+ax.spines['right'].set_visible(False)
+ax.spines['top'].set_visible(False)
+plt.ylabel('new reported MA deaths by day [source: JHU CSSE]')
+plt.show()
+
+# daily deaths + trailing average (PA)
+daily_deaths = deaths_pa[1:] - deaths_pa[:-1]
+fig, ax = plt.subplots()
+plt.bar(dates[1:], daily_deaths, width=1)
+plt.plot(dates[7:], (daily_deaths[:-6]+daily_deaths[1:-5]+daily_deaths[2:-4]+daily_deaths[3:-3]+daily_deaths[4:-2]+daily_deaths[5:-1]+daily_deaths[6:])/7, 'r.-')
+ax.xaxis.set_tick_params(rotation=45, labelsize=10)
+fig.subplots_adjust(bottom=0.18)
+ax.spines['right'].set_visible(False)
+ax.spines['top'].set_visible(False)
+plt.ylabel('new reported PA deaths by day [source: JHU CSSE]')
+plt.show()
+
+# daily deaths + trailing average (NC)
+daily_deaths = deaths_nc[1:] - deaths_nc[:-1]
+fig, ax = plt.subplots()
+plt.bar(dates[1:], daily_deaths, width=1)
+plt.plot(dates[7:], (daily_deaths[:-6]+daily_deaths[1:-5]+daily_deaths[2:-4]+daily_deaths[3:-3]+daily_deaths[4:-2]+daily_deaths[5:-1]+daily_deaths[6:])/7, 'r.-')
+ax.xaxis.set_tick_params(rotation=45, labelsize=10)
+fig.subplots_adjust(bottom=0.18)
+ax.spines['right'].set_visible(False)
+ax.spines['top'].set_visible(False)
+plt.ylabel('new reported NC deaths by day [source: JHU CSSE]')
 plt.show()
 
 # select local data
