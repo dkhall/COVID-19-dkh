@@ -22,25 +22,25 @@ dates = []
 for ii in us_confirmed.columns[11:]:
     dates.append(dt.datetime.strptime(ii + ' 23:59', '%m/%d/%y %H:%M'))
 
-# confirmed cases over time (log scale)
-fig, ax = plt.subplots()
-
-plt.semilogy(dates[np.where(cases_us>0)[0][0]:], cases_us[cases_us>0], 'b.', ms=1)
-ax.annotate('Confirmed Cases: {:,}'.format(cases_us[-1]), (dates[-1]+dt.timedelta(days=1),
-    0.85*cases_us[-1]), color='blue', fontsize=9)
-
-plt.semilogy(dates[np.where(deaths_us>0)[0][0]:], deaths_us[deaths_us>0], 'r.', ms=1)
-ax.annotate('Deaths: {:,}'.format(deaths_us[-1]), (dates[-1]+dt.timedelta(days=1),
-    0.85*deaths_us[-1]), color='red', fontsize=9)
-
-ax.set_ylim([0.9,300e6])
-ax.xaxis.set_tick_params(rotation=45, labelsize=10)
-fig.subplots_adjust(bottom=0.18, right=0.73)
-ax.spines['right'].set_visible(False)
-ax.spines['top'].set_visible(False)
-plt.title('COVID-19 in the United States [source: JHU CSSE]', fontsize=10)
-# plt.legend()
-plt.show()
+## confirmed cases over time (log scale)
+#fig, ax = plt.subplots()
+#
+#plt.semilogy(dates[np.where(cases_us>0)[0][0]:], cases_us[cases_us>0], 'b.', ms=1)
+#ax.annotate('Confirmed Cases: {:,}'.format(cases_us[-1]), (dates[-1]+dt.timedelta(days=1),
+#    0.85*cases_us[-1]), color='blue', fontsize=9)
+#
+#plt.semilogy(dates[np.where(deaths_us>0)[0][0]:], deaths_us[deaths_us>0], 'r.', ms=1)
+#ax.annotate('Deaths: {:,}'.format(deaths_us[-1]), (dates[-1]+dt.timedelta(days=1),
+#    0.85*deaths_us[-1]), color='red', fontsize=9)
+#
+#ax.set_ylim([0.9,300e6])
+#ax.xaxis.set_tick_params(rotation=45, labelsize=10)
+#fig.subplots_adjust(bottom=0.18, right=0.73)
+#ax.spines['right'].set_visible(False)
+#ax.spines['top'].set_visible(False)
+#plt.title('COVID-19 in the United States [source: JHU CSSE]', fontsize=10)
+## plt.legend()
+#plt.show()
 
 # daily deaths + trailing average (US)
 daily_deaths = deaths_us[1:] - deaths_us[:-1]
@@ -52,6 +52,7 @@ fig.subplots_adjust(bottom=0.18)
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
 plt.ylabel('new reported deaths by day [source: JHU CSSE]')
+plt.ylim(bottom=0)
 plt.show()
 
 # daily deaths + trailing average (MA)
@@ -64,6 +65,7 @@ fig.subplots_adjust(bottom=0.18)
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
 plt.ylabel('new reported MA deaths by day [source: JHU CSSE]')
+plt.ylim(bottom=0)
 plt.show()
 
 # daily deaths + trailing average (PA)
@@ -76,6 +78,7 @@ fig.subplots_adjust(bottom=0.18)
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
 plt.ylabel('new reported PA deaths by day [source: JHU CSSE]')
+plt.ylim(bottom=0)
 plt.show()
 
 # daily deaths + trailing average (NC)
@@ -88,6 +91,7 @@ fig.subplots_adjust(bottom=0.18)
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
 plt.ylabel('new reported NC deaths by day [source: JHU CSSE]')
+plt.ylim(bottom=0)
 plt.show()
 
 # daily deaths + trailing average (FL)
@@ -100,6 +104,7 @@ fig.subplots_adjust(bottom=0.18)
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
 plt.ylabel('new reported FL deaths by day [source: JHU CSSE]')
+plt.ylim(bottom=0)
 plt.show()
 
 # daily deaths + trailing average (TX)
@@ -112,6 +117,7 @@ fig.subplots_adjust(bottom=0.18)
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
 plt.ylabel('new reported TX deaths by day [source: JHU CSSE]')
+plt.ylim(bottom=0)
 plt.show()
 
 # daily deaths + trailing average (CA)
@@ -124,10 +130,8 @@ fig.subplots_adjust(bottom=0.18)
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
 plt.ylabel('new reported FL deaths by day [source: JHU CSSE]')
+plt.ylim(bottom=0)
 plt.show()
-
-# select local data
-# us_confirmed_us = us_confirmed[us_confirmed['Country/Region'] == 'US']
 
 # TODO curve fitting
 
