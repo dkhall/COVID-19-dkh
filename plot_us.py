@@ -129,7 +129,7 @@ ax.xaxis.set_tick_params(rotation=45, labelsize=10)
 fig.subplots_adjust(bottom=0.18)
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
-plt.ylabel('new reported FL deaths by day [source: JHU CSSE]')
+plt.ylabel('new reported CA deaths by day [source: JHU CSSE]')
 plt.ylim(bottom=0)
 plt.show()
 
