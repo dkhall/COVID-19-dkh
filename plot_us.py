@@ -23,6 +23,8 @@ deaths_tx = us_deaths[us_deaths['Province_State']=='Texas'].sum().values[12:]
 pop_tx = us_deaths[us_deaths['Province_State']=='Texas']['Population'].values.sum()
 deaths_ca = us_deaths[us_deaths['Province_State']=='California'].sum().values[12:]
 pop_ca = us_deaths[us_deaths['Province_State']=='California']['Population'].values.sum()
+deaths_ny = us_deaths[us_deaths['Province_State']=='New York'].sum().values[12:]
+pop_ny = us_deaths[us_deaths['Province_State']=='New York']['Population'].values.sum()
 
 # time series dates (columns) as timestamps
 dates = []
@@ -136,7 +138,20 @@ ax.xaxis.set_tick_params(rotation=45, labelsize=10)
 fig.subplots_adjust(bottom=0.18)
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
-plt.ylabel('new reported CA deaths by day [source: JHU CSSE]')
+plt.ylabel('fraction of CA killed per day [source: JHU CSSE]')
+plt.ylim(0,5e-5)
+plt.show()
+
+# daily deaths + trailing average (NY)
+daily_deaths = (deaths_ny[1:] - deaths_ny[:-1])/pop_ny
+fig, ax = plt.subplots()
+plt.bar(dates[1:], daily_deaths, width=1)
+plt.plot(dates[7:], (daily_deaths[:-6]+daily_deaths[1:-5]+daily_deaths[2:-4]+daily_deaths[3:-3]+daily_deaths[4:-2]+daily_deaths[5:-1]+daily_deaths[6:])/7, 'r-', lw=2.5)
+ax.xaxis.set_tick_params(rotation=45, labelsize=10)
+fig.subplots_adjust(bottom=0.18)
+ax.spines['right'].set_visible(False)
+ax.spines['top'].set_visible(False)
+plt.ylabel('fraction of NY killed per day [source: JHU CSSE]')
 plt.ylim(0,5e-5)
 plt.show()
 
